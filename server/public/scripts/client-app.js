@@ -38,6 +38,11 @@ app.controller("BookController", ["$http", function($http){
         console.log("GET RESPONSE: ", response);
 
         self.books=response.data;
+        
+        self.books.forEach(function(theBook){
+          theBook.published = new Date(theBook.published);
+
+        });
 
       });
   }

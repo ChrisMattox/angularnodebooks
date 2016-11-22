@@ -21,6 +21,7 @@ router.get('/', function(req, res) {
         console.log('select query error: ', err);
         res.sendStatus(500);
       }
+      
       res.send(result.rows);
 
     });

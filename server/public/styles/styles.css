@@ -16,6 +16,9 @@ h2 {
 
 input {
   width: 600px;
+  background-color: magenta;
+  color: white;
+  border: none;
 }
 
 select {

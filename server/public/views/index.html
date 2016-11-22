@@ -1,71 +1,70 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Put that Postgres in that Node</title>
-    <script src="vendor/angular.min.js"></script>
-    <script src="vendor/jquery.min.js"></script>
-    <script src="scripts/client-app.js"></script>
-    <!-- <link href="https://fonts.googleapis.com/css?family=Taviraj" rel="stylesheet"> -->
-    <link rel="stylesheet" href="vendor/bootstrap.min.css" />
-    <link rel="stylesheet" href="styles/styles.css"  />
-  </head>
-  <body ng-app="myApp">
-    <main class="container" ng-controller="BookController as bc">
-      <img src="assets/sigmanaut.png" alt="sigman" style="width:130px;height:130px;">
-      <header>
-        <h1>The Sigmanauts Library presents...</h1>
-      </header>
+<head>
+  <title>Put that Postgres in that Node</title>
+  <script src="vendor/angular.min.js"></script>
+  <script src="vendor/jquery.min.js"></script>
+  <script src="scripts/client-app.js"></script>
+  <!-- <link href="https://fonts.googleapis.com/css?family=Taviraj" rel="stylesheet"> -->
+  <link rel="stylesheet" href="vendor/bootstrap.min.css" />
+  <link rel="stylesheet" href="styles/styles.css"  />
+</head>
+<body ng-app="myApp">
+  <main class="container" ng-controller="BookController as bc">
+    <img src="assets/sigmanaut.png" alt="sigman" style="width:130px;height:130px;">
+    <header>
+      <h1>The Sigmanauts Library presents...</h1>
+    </header>
 
-      <h2>Add a book</h2>
-      <form id="book-form" ng-submit="bc.addBook()">
-        <div class="form-group">
-          <label for="title">Title:</label>
-          <input type="text" id="title" ng-model="bc.newBook.title" name="title" class="form-control" />
-        </div>
-
-        <div class="form-group">
-          <label for="author">Author:</label>
-          <input type="text" id="author" ng-model="bc.newBook.author" name="author" class="form-control" />
-        </div>
-
-        <div class="form-group">
-          <label for="published">Published Date:</label>
-          <input type="datetime" id="published" ng-model="bc.newBook.published" name="published"  class="form-control"/>
-        </div>
-
-        <div class="form-group">
-          <label for="genre">Genre:</label>
-          <input type="text" id="genre" ng-model="bc.newBook.genre" name="genre" class="form-control"/>
-        </div>
-
-        <div class="form-group">
-          <label for="edition">Edition:</label>
-          <input type="number" id="edition" ng-model="bc.newBook.edition" name="edition" class="form-control"/>
-        </div>
-
-        <div class="form-group">
-          <label for="publisher">Publisher:</label>
-          <input type="text" id="publisher" ng-model="bc.newBook.publisher" name="publisher" class="form-control"/>
-        </div>
-
-        <button id="book-submit" class="btn btn-default">Go</button>
-      </form>
-
-      <h2>Books</h2>
-                    <!-- make new controller obeject       pass book.genre into bc.genre = bc.genre.genre -->
-        <select class="form-control" id="sel1" ng-model="bc.genre" ng-options="book.genre for book in bc.books | unique: 'genre'"></select>
-                    <!-- i want this object         -->
-      <div ng-repeat="book in bc.books | filter:bc.genre.genre" class="book">
-        <input type="text" ng-model="book.title" ng-value="book.title"></input><br>
-        <input type="text" ng-model="book.author" placeholder="{{book.author}}"></input><br>
-        <input type="datetime" ng-model="book.published" placeholder="{{book.published}}"></input><br>
-        <input type="text" ng-model="book.genre" placeholder="{{book.genre}}"></input><br>
-        <input type="number" ng-model="book.edition" placeholder="{{book.edition}}"></input><br>
-        <input type="text" ng-model="book.publisher" placeholder="{{book.publisher}}"></input><br>
-        <button class = "btn btn-danger" ng-click="bc.deleteBook(book)">DELETE</button>
-        <button class = "btn btn-warning" ng-click="bc.editBook(book)">EDIT</button>
+    <h2>Add a book</h2>
+    <form id="book-form" ng-submit="bc.addBook()">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" ng-model="bc.newBook.title" name="title" class="form-control" />
       </div>
-    </main>
 
-  </body>
+      <div class="form-group">
+        <label for="author">Author:</label>
+        <input type="text" id="author" ng-model="bc.newBook.author" name="author" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="published">Published Date:</label>
+        <input type="date" id="published" ng-model="bc.newBook.published" name="published"  class="form-control"/>
+      </div>
+
+      <div class="form-group">
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" ng-model="bc.newBook.genre" name="genre" class="form-control"/>
+      </div>
+
+      <div class="form-group">
+        <label for="edition">Edition:</label>
+        <input type="number" id="edition" ng-model="bc.newBook.edition" name="edition" class="form-control"/>
+      </div>
+
+      <div class="form-group">
+        <label for="publisher">Publisher:</label>
+        <input type="text" id="publisher" ng-model="bc.newBook.publisher" name="publisher" class="form-control"/>
+      </div>
+
+      <button id="book-submit" class="btn btn-default">Go</button>
+    </form>
+
+    <h2>Books</h2>
+    <!-- make new controller obeject       pass book.genre into bc.genre = bc.genre.genre -->
+    <select class="form-control" id="sel1" ng-model="bc.genre" ng-options="book.genre for book in bc.books | unique: 'genre'"></select>
+    <!-- i want this object         -->
+    <div ng-repeat="book in bc.books | filter:bc.genre.genre" class="book">
+      <input type="text" ng-model="book.title" ng-value="book.title"></input><br>
+      <input type="text" ng-model="book.author" placeholder="{{book.author}}"></input><br>
+      <input type="date" ng-model="book.published" placeholder="{{book.published}}"></input><br>
+      <input type="text" ng-model="book.genre" placeholder="{{book.genre}}"></input><br>
+      <input type="number" ng-model="book.edition" placeholder="{{book.edition}}"></input><br>
+      <input type="text" ng-model="book.publisher" placeholder="{{book.publisher}}"></input><br>
+      <button class = "btn btn-danger" ng-click="bc.deleteBook(book)">DELETE</button>
+      <button class = "btn btn-warning" ng-click="bc.editBook(book)">EDIT</button>
+    </div>
+  </main>
+</body>
 </html>
