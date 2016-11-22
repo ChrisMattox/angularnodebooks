@@ -4,7 +4,8 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var books = require('./routes/books');
 
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json()); //angular
 
 // Our routes
 app.use('/books', books);

@@ -30,6 +30,7 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
   var newBook = req.body;
+  console.log(newBook);
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
       console.log('connection error: ', err);
@@ -57,8 +58,7 @@ router.post('/', function(req, res) {
 
 router.delete('/:id', function(req, res) {
   bookID = req.params.id;
-
-  console.log('book id to delete: ', bookID);
+  // console.log('book id to delete: ', bookID);
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
       console.log('connection error: ', err);

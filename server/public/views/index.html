@@ -2,56 +2,71 @@
 <html>
   <head>
     <title>Put that Postgres in that Node</title>
+    <script src="vendor/angular.min.js"></script>
     <script src="vendor/jquery.min.js"></script>
     <script src="scripts/client-app.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Taviraj" rel="stylesheet">
     <link rel="stylesheet" href="vendor/bootstrap.min.css" />
     <link rel="stylesheet" href="styles/styles.css"  />
   </head>
-  <body>
-    <main class="container">
+  <body ng-app="myApp">
+    <main class="container" ng-controller="BookController as bc">
       <header>
         <h1>The Sigmanauts Library presents...</h1>
       </header>
       <h2>Add a book</h2>
-      <form id="book-form">
+      <form id="book-form" ng-submit="bc.addBook()">
         <div class="form-group">
           <label for="title">Title:</label>
-          <input type="text" id="title" name="title" class="form-control" />
+          <input type="text" id="title" ng-model="bc.newBook.title" name="title" class="form-control" />
         </div>
 
         <div class="form-group">
           <label for="author">Author:</label>
-          <input type="text" id="author" name="author" class="form-control" />
+          <input type="text" id="author" ng-model="bc.newBook.author" name="author" class="form-control" />
         </div>
 
         <div class="form-group">
           <label for="published">Published Date:</label>
-          <input type="date" id="published" name="published"  class="form-control"/>
+          <input type="date" id="published" ng-model="bc.newBook.published" name="published"  class="form-control"/>
         </div>
 
         <div class="form-group">
           <label for="genre">Genre:</label>
-          <input type="text" id="genre" name="genre" class="form-control"/>
+          <input type="text" id="genre" ng-model="bc.newBook.genre" name="genre" class="form-control"/>
         </div>
 
         <div class="form-group">
           <label for="edition">Edition:</label>
-          <input type="number" id="edition" name="edition" class="form-control"/>
+          <input type="number" id="edition" ng-model="bc.newBook.edition" name="edition" class="form-control"/>
         </div>
 
         <div class="form-group">
           <label for="publisher">Publisher:</label>
-          <input type="text" id="publisher" name="publisher" class="form-control"/>
+          <input type="text" id="publisher" ng-model="bc.newBook.publisher" name="publisher" class="form-control"/>
         </div>
 
         <button id="book-submit" class="btn btn-default">Go</button>
       </form>
 
       <h2>Books</h2>
-      <ul id="book-list">
-
-      </ul>
+      <div ng-repeat="book in bc.books" class="book">
+        <input type="text" ng-model="book.title" placeholder="{{book.title}}"></input><br>
+        <input type="text" ng-model="book.author" placeholder="{{book.author}}"></input><br>
+        <!-- <input type="number" ng-model="book.published" placeholder="{{book.published}}"></input><br>
+        <input type="text" ng-model="book.genre" placeholder="{{book.genre}}"></input><br>
+        <input type="number" ng-model="book.edition" placeholder="{{book.edition}}"></input><br>
+        <input type="text" ng-model="book.publisher" placeholder="{{book.publisher}}"></input><br> -->
+        <!-- <h2>{{book.title}}</h2>
+        <p>{{book.author}}</p>
+        <p>{{book.published}}</p>
+        <p>{{book.genre}}</p>
+        <p>{{book.edition}}</p>
+        <p>{{book.publisher}}</p> -->
+        <!-- passing parameter into click me function -->
+        <button class = "btn btn-danger" ng-click="bc.deleteBook(book)">DELETE</button>
+        <button class = "btn btn-warning" ng-click="bc.editBook(book)">EDIT</button>
+      </div>
     </main>
 
   </body>
