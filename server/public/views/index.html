@@ -5,7 +5,7 @@
     <script src="vendor/angular.min.js"></script>
     <script src="vendor/jquery.min.js"></script>
     <script src="scripts/client-app.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Taviraj" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Taviraj" rel="stylesheet"> -->
     <link rel="stylesheet" href="vendor/bootstrap.min.css" />
     <link rel="stylesheet" href="styles/styles.css"  />
   </head>
@@ -28,7 +28,7 @@
 
         <div class="form-group">
           <label for="published">Published Date:</label>
-          <input type="date" id="published" ng-model="bc.newBook.published" name="published"  class="form-control"/>
+          <input type="datetime" id="published" ng-model="bc.newBook.published" name="published"  class="form-control"/>
         </div>
 
         <div class="form-group">
@@ -51,19 +51,12 @@
 
       <h2>Books</h2>
       <div ng-repeat="book in bc.books" class="book">
-        <input type="text" ng-model="book.title" placeholder="{{book.title}}"></input><br>
+        <input type="text" ng-model="book.title" ng-value="book.title"></input><br>
         <input type="text" ng-model="book.author" placeholder="{{book.author}}"></input><br>
-        <!-- <input type="number" ng-model="book.published" placeholder="{{book.published}}"></input><br>
+        <input type="datetime" ng-model="book.published" placeholder="{{book.published}}"></input><br>
         <input type="text" ng-model="book.genre" placeholder="{{book.genre}}"></input><br>
         <input type="number" ng-model="book.edition" placeholder="{{book.edition}}"></input><br>
-        <input type="text" ng-model="book.publisher" placeholder="{{book.publisher}}"></input><br> -->
-        <!-- <h2>{{book.title}}</h2>
-        <p>{{book.author}}</p>
-        <p>{{book.published}}</p>
-        <p>{{book.genre}}</p>
-        <p>{{book.edition}}</p>
-        <p>{{book.publisher}}</p> -->
-        <!-- passing parameter into click me function -->
+        <input type="text" ng-model="book.publisher" placeholder="{{book.publisher}}"></input><br>
         <button class = "btn btn-danger" ng-click="bc.deleteBook(book)">DELETE</button>
         <button class = "btn btn-warning" ng-click="bc.editBook(book)">EDIT</button>
       </div>
