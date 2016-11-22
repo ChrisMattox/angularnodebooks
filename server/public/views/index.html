@@ -11,6 +11,7 @@
   </head>
   <body ng-app="myApp">
     <main class="container" ng-controller="BookController as bc">
+      <img src="assets/sigmanaut.png" alt="sigman" style="width:130px;height:130px;">
       <header>
         <h1>The Sigmanauts Library presents...</h1>
       </header>
@@ -52,7 +53,7 @@
 
       <h2>Books</h2>
                     <!-- make new controller obeject       pass book.genre into bc.genre = bc.genre.genre -->
-        <select ng-model="bc.genre" ng-options="book.genre for book in bc.books | unique: 'genre'"></select>
+        <select class="form-control" id="sel1" ng-model="bc.genre" ng-options="book.genre for book in bc.books | unique: 'genre'"></select>
                     <!-- i want this object         -->
       <div ng-repeat="book in bc.books | filter:bc.genre.genre" class="book">
         <input type="text" ng-model="book.title" ng-value="book.title"></input><br>
